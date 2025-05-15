@@ -20,7 +20,10 @@ public class RequestMonitor extends OncePerRequestFilter {
         log.info("Request monitor started");
 
         log.info("Method: {}", request.getMethod());
+        log.info("Remote Host: {}", request.getRemoteHost());
+        log.info("Server let Path: {}", request.getServletPath());
         log.info("URI: {}", request.getRequestURI());
+        log.info("PathInfo: {}", request.getPathInfo());
         log.info("QueryString: {}", request.getQueryString());
         log.info("Headers");
         Enumeration<String> headerNames = request.getHeaderNames();
