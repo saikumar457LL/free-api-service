@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 @Component
 @Slf4j
@@ -22,12 +23,11 @@ public class RequestMonitor extends OncePerRequestFilter {
         log.info("URI: {}", request.getRequestURI());
         log.info("QueryString: {}", request.getQueryString());
         log.info("Headers");
-        while (request.getHeaderNames().hasMoreElements()) {
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
             String header = request.getHeaderNames().nextElement();
             log.info("{} : {}", header, request.getHeader(header));
         }
         log.info("Request monitor completed");
-
-        filterChain.doFilter(request, response);
     }
 }
