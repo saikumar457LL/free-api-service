@@ -29,5 +29,6 @@ public class RequestMonitor extends OncePerRequestFilter {
             log.info("{} : {}", header, request.getHeader(header));
         }
         log.info("Request monitor completed");
+        filterChain.doFilter(request, response);
     }
 }
