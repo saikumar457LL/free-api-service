@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -33,5 +34,11 @@ public class FreeApi {
     @CrossOrigin("*")
     public ResponseEntity<String> getDataById(@PathVariable String id) {
         return ResponseEntity.ok(someData.getData().get(Integer.parseInt(id)));
+    }
+
+    @GetMapping("/slice")
+    @CrossOrigin("*")
+    public ResponseEntity<List<String>> getAllData(@RequestParam String from, @RequestParam String to) {
+        return ResponseEntity.ok(someData.getData().subList(Integer.parseInt(from),Integer.parseInt(to)));
     }
 }
