@@ -25,7 +25,7 @@ public class RequestMonitor extends OncePerRequestFilter {
         log.info("Headers");
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
-            String header = request.getHeaderNames().nextElement();
+            String header = headerNames.nextElement();
             log.info("{} : {}", header, request.getHeader(header));
         }
         log.info("Request monitor completed");
